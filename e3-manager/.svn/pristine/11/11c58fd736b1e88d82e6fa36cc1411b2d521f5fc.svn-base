@@ -1,0 +1,7 @@
+package cn.e3mail.service;
+
+import cn.e3mail.pojo.TbItem;
+
+public interface TbItemService {
+	TbItem findItemById(long id);
+}

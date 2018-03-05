@@ -1,0 +1,4 @@
+cn\e3mail\search\service\SearchItemServiceImpl.class
+cn\e3mail\search\mapper\ItemMapper.class
+cn\e3mail\search\service\SearchServiceImpl.class
+cn\e3mail\search\dao\SearchDAO.class

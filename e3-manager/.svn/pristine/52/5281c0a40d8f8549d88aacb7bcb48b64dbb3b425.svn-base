@@ -1,0 +1,39 @@
+package cn.e3mail.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import cn.e3mail.mapper.TbItemMapper;
+import cn.e3mail.pojo.TbItem;
+import cn.e3mail.pojo.TbItemExample;
+import cn.e3mail.pojo.TbItemExample.Criteria;
+
+/**
+ * <p>Title: TbItemServiceImpl</p>
+ * <p>Description: </p>
+ * <p>Company: www.itcast.cn</p> 
+ * @version 1.0
+ * 根据商品id查询商品信息
+ */
+@Service
+public class TbItemServiceImpl implements TbItemService {
+	@Autowired
+	private TbItemMapper tbItemMapper;
+	@Override
+	public TbItem findItemById(long id) {
+		//TbItem tbItem = tbItemMapper.selectByPrimaryKey(id);//根据主键查询
+		TbItemExample example=new TbItemExample();
+		Criteria criteria = example.createCriteria();//创建查询条件对象
+		criteria.andIdEqualTo(id);//设置查询条件
+		//执行查询
+		List<TbItem> list = tbItemMapper.selectByExample(example);//根据条件查询
+		//判空
+		if (list!=null&&list.size()>0) {
+			return list.get(0);
+		}
+		return null;
+	}
+
+}

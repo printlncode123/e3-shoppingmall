@@ -1,0 +1,11 @@
+cn\e3mail\mapper\TbOrderShippingMapper.class
+cn\e3mail\mapper\TbOrderMapper.class
+cn\e3mail\mapper\TbContentCategoryMapper.class
+cn\e3mail\mapper\TbItemCatMapper.class
+cn\e3mail\mapper\TbContentMapper.class
+cn\e3mail\mapper\TbItemParamItemMapper.class
+cn\e3mail\mapper\TbItemDescMapper.class
+cn\e3mail\mapper\TbUserMapper.class
+cn\e3mail\mapper\TbItemMapper.class
+cn\e3mail\mapper\TbItemParamMapper.class
+cn\e3mail\mapper\TbOrderItemMapper.class

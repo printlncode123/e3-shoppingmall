@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:dubbo="http://code.alibabatech.com/schema/dubbo" 
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.2.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd
+	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.2.xsd
+	http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+	<!-- 配置扫描service包下所有包 -->
+	<context:component-scan base-package="cn.e3mail.sso.service"/>
+	<!-- 使用dubbo中间件发布服务 -->
+	<!-- 服务提供方的信息 -->
+	<dubbo:application name="e3-sso"/>
+	<!-- 将服务注册到注册中心：zookeeper ,zookeeper的端口是2181-->
+	<dubbo:registry address="192.168.25.128:2181" protocol="zookeeper"/>
+	<!-- 用dubbo协议在20800端口暴露服务（服务服务） -->
+	<dubbo:protocol name="dubbo" port="20803"/>
+	<!-- 声明要暴露（发布）的服务的接口 -->
+	<dubbo:service interface="cn.e3mail.sso.service.RegisterService" ref="registerServiceImpl" timeout="600000"/>
+	<dubbo:service interface="cn.e3mail.sso.service.LoginService" ref="loginServiceImpl" timeout="60000"/>
+	<dubbo:service interface="cn.e3mail.sso.service.TokenService" ref="TokenServiceImpl" timeout="60000"/>
+</beans>

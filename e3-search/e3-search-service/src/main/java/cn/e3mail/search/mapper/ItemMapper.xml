@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.e3mail.search.mapper.ItemMapper" >
+  <!-- 使用solr从数据库查出写到索引库查询商品-->
+  <select id="findItemList" resultType="cn.e3mail.common.SearchItem">
+  	select a.id,
+	  	a.title,
+	  	a.sell_point,
+	  	a.price,
+	  	a.image,
+	  	b.name catagory_name 
+   from tb_item a LEFT JOIN tb_item_cat b on a.cid=b.id;
+  </select>
+  
+  <select id="getItemById" parameterType="long"  resultType="cn.e3mail.common.SearchItem">
+  	select a.id,
+	  	a.title,
+	  	a.sell_point,
+	  	a.price,
+	  	a.image,
+	  	b.name catagory_name 
+   from tb_item a LEFT JOIN tb_item_cat b on a.cid=b.id
+   WHERE a.id=#{id};
+  </select>
+</mapper>
